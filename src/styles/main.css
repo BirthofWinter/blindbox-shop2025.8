@@ -1,0 +1,395 @@
+/* 全局样式 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f5f5f5;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+input {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 100%;
+}
+
+/* 导航栏样式 */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  color: white;
+  padding: 1rem 2rem;
+}
+
+.nav-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-link {
+  background: none;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}
+
+.nav-link:hover {
+  background-color: #444;
+}
+
+.logout {
+  background-color: #d32f2f;
+}
+
+.logout:hover {
+  background-color: #b71c1c;
+}
+
+/* 登录和注册页面样式 */
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.form-container {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-form, .register-form {
+  margin-bottom: 1rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.login-button, .register-button {
+  background-color: #4caf50;
+  color: white;
+  width: 100%;
+  padding: 10px;
+  margin-top: 1rem;
+}
+
+.login-button:hover, .register-button:hover {
+  background-color: #388e3c;
+}
+
+.toggle-form {
+  background: none;
+  border: none;
+  color: #2196f3;
+  text-decoration: underline;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.error-message {
+  color: #d32f2f;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  background-color: #ffebee;
+  border-radius: 4px;
+}
+
+.success-message {
+  color: #388e3c;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  background-color: #e8f5e9;
+  border-radius: 4px;
+}
+
+/* 主页样式 */
+.home-content {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.home-content h1 {
+  margin-bottom: 1rem;
+}
+
+.main-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.main-button {
+  background-color: #2196f3;
+  color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.main-button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  background-color: #1976d2;
+}
+
+.main-button p {
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  opacity: 0.8;
+}
+
+/* 个人主页样式 */
+.profile-content {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.user-info {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.display-section, .collectibles-section {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.display-items {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.display-item {
+  flex: 1;
+  border: 1px dashed #ddd;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.collectibles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.collectible-card {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 1rem;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.collectible-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.collectible-card.displayed {
+  border: 2px solid #4caf50;
+}
+
+.display-badge {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background-color: #4caf50;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+.display-options {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  border-radius: 8px;
+  z-index: 10;
+}
+
+.display-options button {
+  width: 100%;
+  background-color: #2196f3;
+  color: white;
+}
+
+.display-options button:hover {
+  background-color: #1976d2;
+}
+
+/* 商城页面样式 */
+.shop-content {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.blind-boxes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.blind-box-card {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.blind-box-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.blind-box-card h3 {
+  margin-bottom: 0.5rem;
+}
+
+.price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #d32f2f;
+  margin-bottom: 1rem;
+}
+
+.purchase-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.quantity-control {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.quantity-control input {
+  width: 60px;
+}
+
+.buy-button {
+  background-color: #ff9800;
+  color: white;
+  width: 100%;
+}
+
+.buy-button:hover {
+  background-color: #f57c00;
+}
+
+.confirm-purchase {
+  background-color: #f5f5f5;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-top: 1rem;
+}
+
+.confirm-buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.confirm-button {
+  background-color: #4caf50;
+  color: white;
+  flex: 1;
+}
+
+.confirm-button:hover {
+  background-color: #388e3c;
+}
+
+.cancel-button {
+  background-color: #9e9e9e;
+  color: white;
+  flex: 1;
+}
+
+.cancel-button:hover {
+  background-color: #757575;
+}
+
+/* 加载状态 */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-size: 1.2rem;
+  color: #666;
+}
