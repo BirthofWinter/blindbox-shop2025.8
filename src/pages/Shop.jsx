@@ -3,9 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Navbar from '../components/Navbar';
 import BlindBoxCard from '../components/BlindBoxCard';
+import CornerLogo from '../components/CornerLogo';
 
 const Shop = () => {
   const [blindBoxes, setBlindBoxes] = useState([]);
+  const [filteredBlindBoxes, setFilteredBlindBoxes] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
   const [cart, setCart] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -28,12 +31,14 @@ const Shop = () => {
           // 新的标准化响应格式
           if (blindBoxResponse.data.success) {
             setBlindBoxes(blindBoxResponse.data.data);
+            setFilteredBlindBoxes(blindBoxResponse.data.data);
           } else {
             throw new Error(blindBoxResponse.data.message || '获取盲盒数据失败');
           }
         } else {
           // 旧的响应格式
           setBlindBoxes(blindBoxResponse.data);
+          setFilteredBlindBoxes(blindBoxResponse.data);
         }
         
         // 获取或创建购物车
@@ -71,6 +76,29 @@ const Shop = () => {
     fetchData();
   }, [navigate]);
 
+  // 处理搜索输入变化
+  const handleSearchChange = (e) => {
+    const value = e.target.value;
+    setSearchTerm(value);
+    
+    if (value.trim() === '') {
+      // 如果搜索框为空，显示所有盲盒
+      setFilteredBlindBoxes(blindBoxes);
+    } else {
+      // 根据盲盒类型进行过滤
+      const filtered = blindBoxes.filter(box => 
+        box.type.toLowerCase().includes(value.toLowerCase())
+      );
+      setFilteredBlindBoxes(filtered);
+    }
+  };
+  
+  // 清除搜索
+  const clearSearch = () => {
+    setSearchTerm('');
+    setFilteredBlindBoxes(blindBoxes);
+  };
+
   const handlePurchase = async (blindBoxId, quantity) => {
     try {
       setError('');
@@ -96,7 +124,7 @@ const Shop = () => {
       const checkoutResponse = await axios.post(`/order/cart/${cart.id}/checkout`);
       
       if (checkoutResponse.data.success) {
-        setSuccessMessage('购买成功！您获得了新的收藏品！');
+        setSuccessMessage('获取成功！您获得了新的E.G.O藏品！');
         
         // 创建新的购物车
         const userJson = localStorage.getItem('user');
@@ -113,13 +141,13 @@ const Shop = () => {
           setSuccessMessage('');
         }, 3000);
       } else {
-        // 处理结算失败的情况，包括余额不足
-        setError(checkoutResponse.data.message || '购买失败');
+        // 处理结算失败的情况，包括脑啡肽不足
+        setError(checkoutResponse.data.message || '获取失败');
       }
     } catch (err) {
       console.error('购买失败:', err);
       // 处理网络错误或其他异常
-      setError(err.response?.data?.message || '购买失败，请稍后再试');
+      setError(err.response?.data?.message || '获取失败，请稍后再试');
     }
   };
 
@@ -132,22 +160,43 @@ const Shop = () => {
       <Navbar />
       <div className="shop-content">
         <h1>盲盒商城</h1>
+        <p>使用脑啡肽获取E.G.O藏品</p>
+        <CornerLogo />
         
         {error && <div className="error-message">{error}</div>}
         {successMessage && <div className="success-message">{successMessage}</div>}
         
+        <div className="search-container">
+          <input
+            type="text"
+            placeholder="搜索盲盒类型..."
+            value={searchTerm}
+            onChange={handleSearchChange}
+            className="search-input"
+          />
+          {searchTerm && (
+            <button onClick={clearSearch} className="clear-search-button">
+              清除
+            </button>
+          )}
+        </div>
+        
         {blindBoxes.length > 0 ? (
           <div className="blind-boxes-grid">
-            {blindBoxes.map(blindBox => (
+            {filteredBlindBoxes.length > 0 ? (
+              filteredBlindBoxes.map(blindBox => (
               <BlindBoxCard 
                 key={blindBox.id} 
                 blindBox={blindBox} 
                 onPurchase={handlePurchase} 
               />
-            ))}
+              ))
+            ) : (
+              <p className="no-results">没有找到匹配的盲盒</p>
+            )}
           </div>
         ) : (
-          <p>暂无可购买的盲盒</p>
+          <p>暂无可获取的盲盒</p>
         )}
       </div>
     </div>

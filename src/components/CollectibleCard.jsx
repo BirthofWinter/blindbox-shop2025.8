@@ -2,6 +2,9 @@ import { useState } from 'react';
 
 const CollectibleCard = ({ collectible, isDisplayed, onSetDisplay, onRemoveDisplay }) => {
   const [showOptions, setShowOptions] = useState(false);
+  
+  // 检查E.G.O藏品名称是否以8结尾
+  const hasStarBadge = collectible.name.endsWith('8');
 
   const handleCardClick = () => {
     setShowOptions(!showOptions);
@@ -25,7 +28,8 @@ const CollectibleCard = ({ collectible, isDisplayed, onSetDisplay, onRemoveDispl
       <h3>{collectible.name}</h3>
       <p>来自: {collectible.blindBox?.type || '未知盲盒'}</p>
       
-      {isDisplayed && <div className="display-badge">展示中</div>}
+      {isDisplayed && <div className="display-badge">已装备</div>}
+      {hasStarBadge && <div className="star-badge">★</div>}
       
       {showOptions && (
         <div className="display-options">

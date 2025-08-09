@@ -34,41 +34,44 @@ const RegisterForm = () => {
   };
 
   return (
-    <div className="register-form">
-      <h2>注册</h2>
-      {error && <div className="error-message">{error}</div>}
-      <form onSubmit={handleRegister}>
-        <div className="form-group">
-          <label htmlFor="nickname">用户名:</label>
+    <div className="register-form" style={{ display: 'block', width: '100%', color: '#f0f0a0' }}>
+      <h2 style={{ color: '#f0f0a0', marginBottom: '1rem' }}>主管注册</h2>
+      {error && <div className="error-message" style={{ color: '#ff6b6b', marginBottom: '1rem' }}>{error}</div>}
+      <form onSubmit={handleRegister} style={{ width: '100%' }}>
+        <div className="form-group" style={{ marginBottom: '1rem' }}>
+          <label htmlFor="nickname" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold', color: '#f0f0a0' }}>主管代号:</label>
           <input
             type="text"
             id="nickname"
             value={nickname}
             onChange={(e) => setNickname(e.target.value)}
             required
+            style={{ width: '100%', padding: '8px', border: '1px solid #f0f0a0', backgroundColor: '#222', color: '#f0f0a0', borderRadius: '4px' }}
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="password">密码:</label>
+        <div className="form-group" style={{ marginBottom: '1rem' }}>
+          <label htmlFor="password" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold', color: '#f0f0a0' }}>安全密钥:</label>
           <input
             type="password"
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            style={{ width: '100%', padding: '8px', border: '1px solid #f0f0a0', backgroundColor: '#222', color: '#f0f0a0', borderRadius: '4px' }}
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="confirmPassword">确认密码:</label>
+        <div className="form-group" style={{ marginBottom: '1rem' }}>
+          <label htmlFor="confirmPassword" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: 'bold', color: '#f0f0a0' }}>确认安全密钥:</label>
           <input
             type="password"
             id="confirmPassword"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
+            style={{ width: '100%', padding: '8px', border: '1px solid #f0f0a0', backgroundColor: '#222', color: '#f0f0a0', borderRadius: '4px' }}
           />
         </div>
-        <button type="submit" className="register-button">注册</button>
+        <button type="submit" className="register-button" style={{ backgroundColor: '#990000', color: '#f0f0a0', width: '100%', padding: '10px', marginTop: '1rem', border: '1px solid #f0f0a0', transition: 'all 0.3s ease' }}>提交申请</button>
       </form>
     </div>
   );

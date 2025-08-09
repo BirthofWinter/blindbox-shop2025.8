@@ -27,7 +27,7 @@ const BlindBoxCard = ({ blindBox, onPurchase }) => {
   return (
     <div className="blind-box-card">
       <h3>{blindBox.type}</h3>
-      <p className="price">价格: ¥{blindBox.price}</p>
+      <p className="price">脑啡肽: {blindBox.price}</p>
       
       {!showConfirm ? (
         <div className="purchase-controls">
@@ -41,12 +41,12 @@ const BlindBoxCard = ({ blindBox, onPurchase }) => {
               onChange={handleQuantityChange}
             />
           </div>
-          <button className="buy-button" onClick={handleBuyClick}>购买</button>
+          <button className="buy-button" onClick={handleBuyClick}>获取</button>
         </div>
       ) : (
         <div className="confirm-purchase">
-          <p>确认购买 {quantity} 个 {blindBox.type} 盲盒?</p>
-          <p>总价: ¥{(blindBox.price * quantity).toFixed(2)}</p>
+          <p>确认获取 {quantity} 个 {blindBox.type} 盲盒?</p>
+          <p>总计脑啡肽: {(blindBox.price * quantity).toFixed(2)}</p>
           <div className="confirm-buttons">
             <button className="confirm-button" onClick={handleConfirmPurchase}>确认</button>
             <button className="cancel-button" onClick={handleCancelPurchase}>取消</button>

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Navbar from '../components/Navbar';
 import CollectibleCard from '../components/CollectibleCard';
+import CornerLogo from '../components/CornerLogo';
 
 const Profile = () => {
   const [user, setUser] = useState(null);
@@ -120,17 +121,18 @@ const Profile = () => {
     <div className="profile-page">
       <Navbar />
       <div className="profile-content">
-        <h1>个人主页</h1>
+        <h1>主管空间</h1>
+        <CornerLogo />
         
         {error && <div className="error-message">{error}</div>}
         
         <div className="user-info">
           <h2>{user?.nickname || '用户'}</h2>
-          <p>余额: ¥{user?.balance || 0}</p>
+          <p>脑啡肽: {user?.balance || 0}</p>
         </div>
         
         <div className="display-section">
-          <h2>展示收藏品</h2>
+          <h2>展示E.G.O藏品</h2>
           <div className="display-items">
             {displayItems.length > 0 ? (
               displayItems.map(item => {
@@ -148,13 +150,13 @@ const Profile = () => {
                 ) : null;
               })
             ) : (
-              <p>您还没有设置展示收藏品</p>
+              <p>您还没有设置展示E.G.O藏品</p>
             )}
           </div>
         </div>
         
         <div className="collectibles-section">
-          <h2>我的收藏品</h2>
+          <h2>我的E.G.O藏品</h2>
           {collectibles.length > 0 ? (
             <div className="collectibles-grid">
               {collectibles.map(collectible => (
@@ -168,7 +170,7 @@ const Profile = () => {
               ))}
             </div>
           ) : (
-            <p>您还没有收藏品，去商城购买盲盒吧！</p>
+            <p>您还没有E.G.O藏品，去商城获取盲盒吧！</p>
           )}
         </div>
       </div>
